@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arkad Solutions — Automação, Segurança, Software e IoT</title>
+<meta name="description" content="Arkad Solutions: tecnologia e engenharia para automação industrial, segurança electrónica, software, IoT e formação profissional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1!important; transform:none!important;}</style></noscript>
+<style>
+  :root{
+    --navy-deep:#0a1830;
+    --navy-mid:#0f2748;
+    --navy-brand:#123a6f;
+    --blue-accent:#4fa8ff;
+    --blue-accent-dim:#2c6bb0;
+    --steel:#b9c2cc;
+    --steel-dim:#7c8896;
+    --paper:#f3f5f8;
+    --paper-line:#dde2e8;
+    --ink:#0a1830;
+    --ink-soft:#3c4a5c;
+    --white:#ffffff;
+    --grid-line-dark: rgba(255,255,255,0.06);
+    --grid-line-light: rgba(10,24,48,0.07);
+    --radius:2px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--blue-accent);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--blue-accent-dim);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:20px;
+    height:1px;
+    background:var(--blue-accent-dim);
+    display:inline-block;
+  }
+  section.dark .eyebrow, .dark .eyebrow{ color:var(--blue-accent); }
+  section.dark .eyebrow::before, .dark .eyebrow::before{ background:var(--blue-accent); }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .dark h1, .dark h2, .dark h3, .dark h4{ color:var(--white); }
+
+  h2{ font-size:clamp(28px, 3.6vw, 42px); line-height:1.12; }
+  h3{ font-size:20px; }
+
+  p{ color:var(--ink-soft); }
+  .dark p{ color:var(--steel); }
+
+  /* ============ NAV ============ */
+  header.site-nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(246, 246, 247, 0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-logo img {
+  height: 80px;
+  width: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  font-weight: 700;
+}
+  .nav-links a{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.03em;
+    color:var(--navy-deep);
+    transition:color 0.2s ease;
+    position:relative;
+    margin-left:36px;
+  }
+  .nav-links a:first-child{ margin-left:0; }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:-6px;
+    width:0; height:1px;
+    background:var(--blue-accent);
+    transition:width 0.25s ease;
+  }
+  .nav-links a:hover{ border-color:var(--blue-accent); color:var(--blue-accent); }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--navy-deep) !important;
+    background:var(--blue-accent);
+    padding:10px 20px;
+    border-radius:var(--radius);
+    border:1px solid var(--blue-accent);
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .nav-cta:hover{ background:transparent; color:var(--blue-accent) !important; }
+  .nav-cta::after{ display:none; }
+  .nav-toggle{ display:none; }
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed;
+      top:72px; left:0; right:0;
+      flex-direction:column;
+      align-items:flex-start;
+      background:var(--navy-deep);
+      padding:24px 32px 32px;
+      gap:22px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      transform:translateY(-130%);
+      transition:transform 0.3s ease;
+    }
+    .nav-links.open{ transform:translateY(0); }
+    .nav-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+    }
+    .nav-toggle span{
+      width:22px; height:2px; background:var(--steel);
+    }
+  }
+
+  /* ============ BACKGROUND TEXTURES ============ */
+  section.dark{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(79,168,255,0.08), transparent 45%),
+      var(--navy-deep);
+    background-image:
+      linear-gradient(var(--grid-line-dark) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line-dark) 1px, transparent 1px),
+      radial-gradient(circle at 15% 20%, rgba(79,168,255,0.08), transparent 45%);
+    background-size:40px 40px, 40px 40px, 100% 100%;
+    color:var(--white);
+    position:relative;
+  }
+  section.light{
+    background:var(--paper);
+    background-image:
+      linear-gradient(var(--grid-line-light) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line-light) 1px, transparent 1px);
+    background-size:40px 40px;
+    position:relative;
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:168px 0 120px;
+    display:flex;
+    align-items:center;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+    width:100%;
+  }
+  .hero h1{
+    font-size:clamp(36px, 5vw, 58px);
+    line-height:1.06;
+    margin:20px 0 24px;
+  }
+  .hero h1 .accent{ color:var(--blue-accent); }
+  .hero p.lead{
+    font-size:17px;
+    max-width:480px;
+    margin-bottom:36px;
+  }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
+  .btn{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.02em;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:all 0.2s ease;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{
+    background:var(--blue-accent);
+    color:var(--navy-deep);
+    border-color:var(--blue-accent);
+  }
+  .btn-primary:hover{ background:transparent; color:var(--blue-accent); }
+  .btn-ghost{
+    color:var(--white);
+    border-color:rgba(255,255,255,0.28);
+  }
+  .btn-ghost:hover{ border-color:var(--blue-accent); color:var(--blue-accent); }
+
+  .hero-stats{
+    display:flex;
+    gap:36px;
+    padding-top:28px;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stats div{ display:flex; flex-direction:column; gap:4px; }
+  .hero-stats .num{ font-family:var(--font-display); font-size:26px; color:var(--white); font-weight:600; }
+  .hero-stats .label{ font-family:var(--font-mono); font-size:11.5px; color:var(--steel-dim); letter-spacing:0.03em; }
+
+  /* schematic diagram */
+  .schematic{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+  }
+  .schematic svg{ width:100%; height:100%; overflow:visible; }
+  .schem-line{
+    fill:none;
+    stroke:var(--blue-accent-dim);
+    stroke-width:1.4;
+    stroke-dasharray:6 260;
+    stroke-dashoffset:0;
+    opacity:0.9;
+    animation:draw 3.6s ease-out forwards;
+  }
+  .schem-line.d1{ animation-delay:0.1s; }
+  .schem-line.d2{ animation-delay:0.35s; }
+  .schem-line.d3{ animation-delay:0.6s; }
+  .schem-line.d4{ animation-delay:0.85s; }
+  .schem-line.d5{ animation-delay:1.1s; }
+  @keyframes draw{
+    0%{ stroke-dasharray:6 1000; stroke-dashoffset:0; opacity:0;}
+    2%{ opacity:1;}
+    100%{ stroke-dasharray:1000 0; stroke-dashoffset:0; opacity:1;}
+  }
+  .schem-node{
+    fill:var(--navy-mid);
+    stroke:var(--steel-dim);
+    stroke-width:1;
+  }
+  .schem-node.core{ fill:var(--blue-accent); stroke:none; }
+  .schem-node-pulse{
+    fill:none;
+    stroke:var(--blue-accent);
+    stroke-width:1;
+    opacity:0;
+    animation:pulse 3s ease-out infinite;
+    animation-delay:2s;
+  }
+  @keyframes pulse{
+    0%{ r:14; opacity:0.7; }
+    100%{ r:32; opacity:0; }
+  }
+  .schem-label{
+    font-family:var(--font-mono);
+    font-size:9.5px;
+    fill:var(--steel-dim);
+    letter-spacing:0.04em;
+  }
+
+  /* ============ MARQUEE / TICKER ============ */
+  .ticker-band{
+    background:var(--navy-mid);
+    border-top:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .ticker-track{
+    display:inline-flex;
+    gap:48px;
+    animation:scroll 28s linear infinite;
+  }
+  .ticker-track span{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    color:var(--steel-dim);
+    text-transform:uppercase;
+  }
+  .ticker-track span b{ color:var(--blue-accent); font-weight:500; }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ============ SECTION GENERIC ============ */
+  section{ padding:110px 0; }
+  .section-head{ max-width:640px; margin-bottom:64px; }
+  .section-head h2{ margin-top:18px; }
+  .section-head p{ margin-top:16px; font-size:16px; }
+
+  /* ============ AREAS GRID ============ */
+  .areas-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--paper-line);
+    border:1px solid var(--paper-line);
+  }
+  .area-card{
+    background:var(--white);
+    padding:36px 32px;
+    position:relative;
+    transition:background 0.25s ease;
+  }
+  .area-card:hover{ background:#fafbfd; }
+  .area-card .idx{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--blue-accent-dim);
+    margin-bottom:22px;
+    display:block;
+  }
+  .area-card h3{ margin-bottom:12px; }
+  .area-card p{ font-size:14.5px; margin-bottom:18px; }
+  .area-card ul{ display:flex; flex-direction:column; gap:8px; }
+  .area-card ul li{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    padding-left:16px;
+    position:relative;
+  }
+  .area-card ul li::before{
+    content:"";
+    position:absolute; left:0; top:8px;
+    width:6px; height:1px;
+    background:var(--blue-accent-dim);
+  }
+  .area-icon{
+    width:44px; height:44px;
+    margin-bottom:20px;
+  }
+  .area-icon svg{ width:100%; height:100%; }
+
+  @media (max-width:900px){
+    .areas-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:640px){
+    .areas-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ============ INTEGRATED SOLUTIONS ============ */
+  .integration-wrap{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .stack-chain{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:28px;
+  }
+  .stack-chip{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--white);
+    background:var(--navy-mid);
+    border:1px solid rgba(255,255,255,0.14);
+    padding:9px 14px;
+    border-radius:var(--radius);
+  }
+  .stack-plus{
+    color:var(--blue-accent);
+    align-self:center;
+    font-family:var(--font-mono);
+  }
+  .integration-visual{
+    position:relative;
+    aspect-ratio:4/3.3;
+  }
+  .integration-visual svg{ width:100%; height:100%; }
+
+  @media (max-width:900px){
+    .integration-wrap{ grid-template-columns:1fr; }
+    .integration-visual{ order:-1; }
+  }
+
+  /* ============ PROCESS / MODELO ============ */
+  .process-rail{
+    position:relative;
+    margin-top:20px;
+  }
+  .process-rail::before{
+    content:"";
+    position:absolute;
+    top:0; bottom:0; left:19px;
+    width:1px;
+    background:rgba(255,255,255,0.14);
+  }
+  .process-step{
+    display:grid;
+    grid-template-columns:40px 1fr;
+    gap:24px;
+    padding:22px 0;
+    position:relative;
+  }
+  .process-step .dot{
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--navy-mid);
+    border:1px solid var(--blue-accent-dim);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--blue-accent);
+    z-index:2;
+  }
+  .process-step h4{ font-size:16px; margin-bottom:4px; }
+  .process-step p{ font-size:13.5px; max-width:520px; }
+
+  @media (min-width:760px){
+    .process-flow-desktop{
+      display:flex;
+      gap:0;
+      margin-top:24px;
+      overflow-x:auto;
+      padding-bottom:12px;
+    }
+    .process-rail{ display:none; }
+    .pf-item{
+      flex:1 0 150px;
+      min-width:150px;
+      padding:0 18px 0 0;
+      position:relative;
+    }
+    .pf-item .num{
+      font-family:var(--font-mono);
+      font-size:12px;
+      color:var(--blue-accent);
+      display:block;
+      margin-bottom:14px;
+    }
+    .pf-item h4{ font-size:14.5px; margin-bottom:8px; line-height:1.3; }
+    .pf-item p{ font-size:12.5px; color:var(--steel-dim); }
+    .pf-item::after{
+      content:"→";
+      position:absolute;
+      right:-4px; top:0;
+      color:var(--blue-accent-dim);
+      font-family:var(--font-mono);
+    }
+    .pf-item:last-child::after{ display:none; }
+    .pf-item::before{
+      content:"";
+      display:block;
+      height:2px;
+      width:100%;
+      background:linear-gradient(90deg, var(--blue-accent-dim), transparent);
+      margin-bottom:16px;
+    }
+  }
+  @media (max-width:759px){
+    .process-flow-desktop{ display:none; }
+  }
+
+  /* ============ WHY / DIFFERENTIATORS ============ */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:28px;
+    margin-top:16px;
+  }
+  .why-item{
+    padding:26px 0 0;
+    border-top:1px solid var(--paper-line);
+  }
+  .why-item .tag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--blue-accent-dim);
+    letter-spacing:0.04em;
+  }
+  .why-item h4{ font-size:16px; margin:10px 0 8px; }
+  .why-item p{ font-size:13.5px; }
+  @media (max-width:900px){ .why-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .why-grid{ grid-template-columns:1fr; } }
+
+  /* ============ VISION / MISSION ============ */
+  .vm-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .vm-card{ background:var(--navy-deep); padding:44px; }
+  .vm-card .eyebrow{ margin-bottom:18px; }
+  .vm-card p{ font-size:16px; color:var(--steel); }
+  @media (max-width:760px){ .vm-grid{ grid-template-columns:1fr; } }
+
+  /* ============ CTA BAND ============ */
+  .cta-band{
+    padding:90px 0;
+  }
+  .cta-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:32px;
+    border:1px solid var(--paper-line);
+    padding:48px;
+    background:var(--white);
+    position:relative;
+  }
+  .cta-inner h2{ max-width:480px; margin-bottom:8px;}
+  .cta-inner p{ max-width:420px; }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--navy-deep);
+    padding:64px 0 28px;
+    color:var(--steel);
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand p{ font-size:13.5px; margin-top:16px; max-width:280px; }
+  .footer-brand img {
+    height: 125px;
+    width: auto;
+    max-width: 290px;
+    object-fit: contain;
+    display: block;
+  }
+  .footer-col h5{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--blue-accent);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .footer-col ul{ display:flex; flex-direction:column; gap:11px; }
+  .footer-col a{ font-size:13.5px; color:var(--steel-dim); transition:color 0.2s ease; }
+  .footer-col a:hover{ color:var(--white); }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:24px;
+    flex-wrap:wrap;
+    gap:12px;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--steel-dim);
+  }
+  @media (max-width:800px){
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:480px){
+    .footer-grid{ grid-template-columns:1fr; }
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <img src="logo2.png" alt="Arkad Solutions">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#areas">Áreas de Actuação</a>
+      <a href="#integracao">Soluções Integradas</a>
+      <a href="#modelo">Modelo</a>
+      <a href="#porque">Porquê a Arkad</a>
+      <a href="#contacto" class="nav-cta">Falar com a Arkad</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="dark hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Tecnologia · Engenharia · Moçambique &amp; África</span>
+        <h1>Transformamos tecnologia em <span class="accent">soluções.</span></h1>
+        <p class="lead">Automação industrial, segurança electrónica, software, IoT e capacitação técnica — integrados numa única solução, desenhada à volta da operação real do seu negócio.</p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary">Iniciar um projecto →</a>
+          <a href="#areas" class="btn btn-ghost">Ver áreas de actuação</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <span class="num">05</span>
+            <span class="label">ÁREAS DE ACTUAÇÃO</span>
+          </div>
+          <div>
+            <span class="num">360°</span>
+            <span class="label">DO PROJECTO AO SUPORTE</span>
+          </div>
+          <div>
+            <span class="num">01</span>
+            <span class="label">ECOSSISTEMA INTEGRADO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="schematic" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <!-- connector lines from 5 pillar nodes to central core -->
+          <path class="schem-line d1" d="M60,70 C120,90 160,140 198,196"/>
+          <path class="schem-line d2" d="M340,70 C280,95 235,145 202,196"/>
+          <path class="schem-line d3" d="M40,260 C110,250 155,225 196,204"/>
+          <path class="schem-line d4" d="M360,260 C290,250 245,225 204,204"/>
+          <path class="schem-line d5" d="M200,340 C200,300 200,250 200,210"/>
+
+          <!-- pillar nodes -->
+          <rect class="schem-node" x="34" y="50" width="52" height="30" rx="2"/>
+          <text class="schem-label" x="42" y="69">PLC / SCADA</text>
+
+          <rect class="schem-node" x="314" y="50" width="52" height="30" rx="2"/>
+          <text class="schem-label" x="322" y="69">CCTV / CONTROLO</text>
+
+          <rect class="schem-node" x="10" y="245" width="60" height="30" rx="2"/>
+          <text class="schem-label" x="18" y="264">SOFTWARE</text>
+
+          <rect class="schem-node" x="330" y="245" width="42" height="30" rx="2"/>
+          <text class="schem-label" x="338" y="264">IoT</text>
+
+          <rect class="schem-node" x="168" y="335" width="64" height="30" rx="2"/>
+          <text class="schem-label" x="180" y="354">FORMAÇÃO</text>
+
+          <!-- core -->
+          <circle class="schem-node-pulse" cx="200" cy="200" r="14"/>
+          <circle class="schem-node core" cx="200" cy="200" r="14"/>
+          <text class="schem-label" x="177" y="230" fill="#4fa8ff" font-size="10">ARKAD</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker-band" aria-hidden="true">
+    <div class="ticker-track">
+      <span>PLC <b>·</b> DCS <b>·</b> SCADA <b>·</b> HMI</span>
+      <span>CCTV <b>·</b> Controlo de Acesso <b>·</b> Biometria</span>
+      <span>Software de Gestão <b>·</b> Dashboards</span>
+      <span>IoT <b>·</b> Telemetria <b>·</b> Monitorização Remota</span>
+      <span>Formação Técnica <b>·</b> TIA Portal <b>·</b> WinCC</span>
+      <span>PLC <b>·</b> DCS <b>·</b> SCADA <b>·</b> HMI</span>
+      <span>CCTV <b>·</b> Controlo de Acesso <b>·</b> Biometria</span>
+      <span>Software de Gestão <b>·</b> Dashboards</span>
+      <span>IoT <b>·</b> Telemetria <b>·</b> Monitorização Remota</span>
+      <span>Formação Técnica <b>·</b> TIA Portal <b>·</b> WinCC</span>
+    </div>
+  </div>
+
+  <!-- ============ AREAS DE ACTUAÇÃO ============ -->
+  <section class="light" id="areas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">O que fazemos</span>
+        <h2>Cinco áreas, uma única forma de trabalhar.</h2>
+        <p>Da fábrica à recepção, do PLC ao dashboard: cada área de actuação foi construída para ligar-se às outras.</p>
+      </div>
+
+      <div class="areas-grid">
+        <div class="area-card reveal">
+          <span class="idx">01 / AUTOMAÇÃO</span>
+          <div class="area-icon">
+            <svg viewBox="0 0 44 44" fill="none"><rect x="6" y="6" width="32" height="32" rx="2" stroke="#123a6f" stroke-width="1.6"/><circle cx="22" cy="22" r="7" stroke="#4fa8ff" stroke-width="1.6"/><path d="M22 4v6M22 34v6M4 22h6M34 22h6" stroke="#123a6f" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Automação Industrial</h3>
+          <p>Controlo e supervisão de processos, do pequeno painel ao projecto de grande complexidade.</p>
+          <ul>
+            <li>PLCs e sistemas de controlo</li>
+            <li>DCS, SCADA e HMI</li>
+            <li>Instrumentação e redes industriais</li>
+            <li>Comissionamento e troubleshooting</li>
+          </ul>
+        </div>
+
+        <div class="area-card reveal">
+          <span class="idx">02 / SEGURANÇA</span>
+          <div class="area-icon">
+            <svg viewBox="0 0 44 44" fill="none"><path d="M22 5 L37 11 V21 C37 30 30.5 36.5 22 39 C13.5 36.5 7 30 7 21 V11 Z" stroke="#123a6f" stroke-width="1.6"/><path d="M16 22l4 4 8-9" stroke="#4fa8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Segurança Electrónica Empresarial</h3>
+          <p>Soluções completas para empresas, indústrias, condomínios e instituições.</p>
+          <ul>
+            <li>CCTV e videovigilância</li>
+            <li>Controlo de acesso e biometria</li>
+            <li>Cercas eléctricas e portões automáticos</li>
+            <li>Monitorização e manutenção</li>
+          </ul>
+        </div>
+
+        <div class="area-card reveal">
+          <span class="idx">03 / SOFTWARE</span>
+          <div class="area-icon">
+            <svg viewBox="0 0 44 44" fill="none"><rect x="5" y="9" width="34" height="24" rx="2" stroke="#123a6f" stroke-width="1.6"/><path d="M14 18l-4 4 4 4M30 18l4 4-4 4M24 15l-4 14" stroke="#4fa8ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Desenvolvimento de Software</h3>
+          <p>Sistemas construídos à volta dos processos reais de cada organização.</p>
+          <ul>
+            <li>Sistemas de gestão empresarial</li>
+            <li>Aplicações web e mobile</li>
+            <li>Dashboards e relatórios</li>
+            <li>Integração entre sistemas</li>
+          </ul>
+        </div>
+
+        <div class="area-card reveal">
+          <span class="idx">04 / IoT</span>
+          <div class="area-icon">
+            <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="4" fill="#4fa8ff"/><circle cx="22" cy="22" r="11" stroke="#123a6f" stroke-width="1.4"/><circle cx="22" cy="22" r="18" stroke="#123a6f" stroke-width="1.2" stroke-dasharray="2 3"/></svg>
+          </div>
+          <h3>Internet das Coisas — IoT</h3>
+          <p>Sensores, activos e sistemas ligados, prontos a gerar dados úteis.</p>
+          <ul>
+            <li>Monitorização remota de equipamentos</li>
+            <li>Aquisição e análise de dados</li>
+            <li>Alertas, notificações e telemetria</li>
+            <li>Dashboards em tempo real</li>
+          </ul>
+        </div>
+
+        <div class="area-card reveal">
+          <span class="idx">05 / FORMAÇÃO</span>
+          <div class="area-icon">
+            <svg viewBox="0 0 44 44" fill="none"><path d="M4 16 22 8 40 16 22 24Z" stroke="#123a6f" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 20v9c0 2 4 5 9 5s9-3 9-5v-9" stroke="#4fa8ff" stroke-width="1.6"/></svg>
+          </div>
+          <h3>Treinamentos Profissionais</h3>
+          <p>Capacitação prática e técnica para profissionais, técnicos e empresas.</p>
+          <ul>
+            <li>Automação e programação de PLCs</li>
+            <li>Siemens TIA Portal e WinCC</li>
+            <li>Instrumentação e redes industriais</li>
+            <li>Segurança electrónica</li>
+          </ul>
+        </div>
+
+        <div class="area-card reveal" style="background:var(--navy-deep); display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <span class="idx" style="color:var(--blue-accent);">06 / EM CONJUNTO</span>
+            <h3 style="color:#fff;">Cada área liga-se às outras.</h3>
+            <p style="color:var(--steel); margin-top:12px;">Nenhuma solução da Arkad é vendida isolada — é desenhada para se integrar com o resto da sua operação.</p>
+          </div>
+          <a href="#integracao" class="btn btn-ghost" style="margin-top:24px; align-self:flex-start;">Ver soluções integradas →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOLUÇÕES INTEGRADAS ============ -->
+  <section class="dark" id="integracao">
+    <div class="wrap integration-wrap">
+      <div class="reveal">
+        <span class="eyebrow">O nosso diferencial</span>
+        <h2>Não fornecemos produtos isolados. Construímos ecossistemas.</h2>
+        <p style="margin-top:18px; font-size:16px;">Uma instalação industrial típica da Arkad combina várias tecnologias numa só solução — capaz de ligar operação, segurança, dados e gestão num único ecossistema.</p>
+        <div class="stack-chain">
+          <span class="stack-chip">PLC</span><span class="stack-plus">+</span>
+          <span class="stack-chip">SCADA</span><span class="stack-plus">+</span>
+          <span class="stack-chip">Instrumentação</span><span class="stack-plus">+</span>
+          <span class="stack-chip">Redes Industriais</span><span class="stack-plus">+</span>
+          <span class="stack-chip">IoT</span><span class="stack-plus">+</span>
+          <span class="stack-chip">Software</span><span class="stack-plus">+</span>
+          <span class="stack-chip">CCTV</span><span class="stack-plus">+</span>
+          <span class="stack-chip">Controlo de Acesso</span>
+        </div>
+      </div>
+      <div class="integration-visual reveal" aria-hidden="true">
+        <svg viewBox="0 0 420 340">
+          <rect x="10" y="10" width="400" height="320" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="60" y1="60" x2="210" y2="170" stroke="#2c6bb0" stroke-width="1.2"/>
+          <line x1="360" y1="60" x2="210" y2="170" stroke="#2c6bb0" stroke-width="1.2"/>
+          <line x1="40" y1="200" x2="210" y2="170" stroke="#2c6bb0" stroke-width="1.2"/>
+          <line x1="380" y1="200" x2="210" y2="170" stroke="#2c6bb0" stroke-width="1.2"/>
+          <line x1="120" y1="290" x2="210" y2="170" stroke="#2c6bb0" stroke-width="1.2"/>
+          <line x1="300" y1="290" x2="210" y2="170" stroke="#2c6bb0" stroke-width="1.2"/>
+
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#b9c2cc">
+            <rect x="26" y="40" width="70" height="26" rx="2" fill="#0f2748" stroke="#7c8896"/>
+            <text x="34" y="57">PLC</text>
+            <rect x="326" y="40" width="76" height="26" rx="2" fill="#0f2748" stroke="#7c8896"/>
+            <text x="334" y="57">SCADA</text>
+            <rect x="6" y="188" width="76" height="26" rx="2" fill="#0f2748" stroke="#7c8896"/>
+            <text x="14" y="205">CCTV</text>
+            <rect x="344" y="188" width="66" height="26" rx="2" fill="#0f2748" stroke="#7c8896"/>
+            <text x="352" y="205">IoT</text>
+            <rect x="76" y="278" width="90" height="26" rx="2" fill="#0f2748" stroke="#7c8896"/>
+            <text x="84" y="295">SOFTWARE</text>
+            <rect x="256" y="278" width="96" height="26" rx="2" fill="#0f2748" stroke="#7c8896"/>
+            <text x="264" y="295">ACESSOS</text>
+          </g>
+
+          <circle cx="210" cy="170" r="26" fill="#4fa8ff"/>
+          <text x="185" y="175" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="700" fill="#0a1830">ARKAD</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODELO DE ACTUAÇÃO ============ -->
+  <section class="light" id="modelo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Como trabalhamos</span>
+        <h2>Um só ciclo, do levantamento ao suporte.</h2>
+        <p>Acompanhamos o cliente em todas as fases, reduzindo riscos de integração e aumentando o valor entregue.</p>
+      </div>
+
+      <div class="process-flow-desktop">
+        <div class="pf-item"><span class="num">01</span><h4>Levantamento</h4><p>Necessidades reais no terreno.</p></div>
+        <div class="pf-item"><span class="num">02</span><h4>Engenharia</h4><p>Desenho técnico da solução.</p></div>
+        <div class="pf-item"><span class="num">03</span><h4>Projecto</h4><p>Especificação e planeamento.</p></div>
+        <div class="pf-item"><span class="num">04</span><h4>Fornecimento</h4><p>Equipamentos e materiais certos.</p></div>
+        <div class="pf-item"><span class="num">05</span><h4>Desenvolvimento</h4><p>Software e integrações à medida.</p></div>
+        <div class="pf-item"><span class="num">06</span><h4>Instalação</h4><p>Execução em obra e em campo.</p></div>
+        <div class="pf-item"><span class="num">07</span><h4>Configuração</h4><p>Parametrização dos sistemas.</p></div>
+        <div class="pf-item"><span class="num">08</span><h4>Comissionamento</h4><p>Testes e validação em produção.</p></div>
+        <div class="pf-item"><span class="num">09</span><h4>Treinamento</h4><p>Capacitação das equipas do cliente.</p></div>
+        <div class="pf-item"><span class="num">10</span><h4>Manutenção</h4><p>Suporte técnico contínuo.</p></div>
+      </div>
+
+      <div class="process-rail" style="display:none;" id="mobileProcess">
+        <div class="process-step"><div class="dot">01</div><div><h4>Levantamento</h4><p>Necessidades reais no terreno.</p></div></div>
+        <div class="process-step"><div class="dot">02</div><div><h4>Engenharia</h4><p>Desenho técnico da solução.</p></div></div>
+        <div class="process-step"><div class="dot">03</div><div><h4>Projecto</h4><p>Especificação e planeamento.</p></div></div>
+        <div class="process-step"><div class="dot">04</div><div><h4>Fornecimento</h4><p>Equipamentos e materiais certos.</p></div></div>
+        <div class="process-step"><div class="dot">05</div><div><h4>Desenvolvimento</h4><p>Software e integrações à medida.</p></div></div>
+        <div class="process-step"><div class="dot">06</div><div><h4>Instalação</h4><p>Execução em obra e em campo.</p></div></div>
+        <div class="process-step"><div class="dot">07</div><div><h4>Configuração</h4><p>Parametrização dos sistemas.</p></div></div>
+        <div class="process-step"><div class="dot">08</div><div><h4>Comissionamento</h4><p>Testes e validação em produção.</p></div></div>
+        <div class="process-step"><div class="dot">09</div><div><h4>Treinamento</h4><p>Capacitação das equipas do cliente.</p></div></div>
+        <div class="process-step"><div class="dot">10</div><div><h4>Manutenção</h4><p>Suporte técnico contínuo.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORQUÊ A ARKAD ============ -->
+  <section class="light" id="porque" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Porquê a Arkad</span>
+        <h2>Engenharia a sério, suporte a sério.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal"><span class="tag">INTEGRAÇÃO</span><h4>Diferentes tecnologias, um só fornecedor</h4><p>Automação, segurança, software e IoT sob a mesma equipa técnica.</p></div>
+        <div class="why-item reveal"><span class="tag">À MEDIDA</span><h4>Soluções personalizadas</h4><p>Cada projecto parte das necessidades reais do cliente, não de um catálogo fixo.</p></div>
+        <div class="why-item reveal"><span class="tag">ENGENHARIA</span><h4>Conhecimento técnico aplicado</h4><p>Equipa com base sólida em engenharia e tecnologia industrial.</p></div>
+        <div class="why-item reveal"><span class="tag">RESULTADOS</span><h4>Foco em eficiência e segurança</h4><p>Orientação clara para resultados operacionais mensuráveis.</p></div>
+        <div class="why-item reveal"><span class="tag">SUPORTE</span><h4>Acompanhamento contínuo</h4><p>Suporte técnico e manutenção depois da entrega do projecto.</p></div>
+        <div class="why-item reveal"><span class="tag">CAPACITAÇÃO</span><h4>Equipas preparadas</h4><p>Formação das equipas do cliente para usar bem cada sistema.</p></div>
+        <div class="why-item reveal"><span class="tag">ESCALA</span><h4>Soluções escaláveis</h4><p>Arquitecturas pensadas para crescer com o negócio do cliente.</p></div>
+        <div class="why-item reveal"><span class="tag">CICLO COMPLETO</span><h4>Do projecto ao suporte</h4><p>Uma só equipa acompanha todo o ciclo de vida da solução.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISÃO / MISSÃO ============ -->
+  <section class="dark">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Direcção</span>
+        <h2>Visão e missão</h2>
+      </div>
+      <div class="vm-grid reveal">
+        <div class="vm-card">
+          <span class="eyebrow">Visão</span>
+          <p>Ser uma referência em tecnologia, automação, segurança electrónica e transformação digital em África — contribuindo para organizações mais seguras, eficientes e inteligentes.</p>
+        </div>
+        <div class="vm-card">
+          <span class="eyebrow">Missão</span>
+          <p>Desenvolver e implementar soluções tecnológicas acessíveis, confiáveis e inovadoras que melhorem a produtividade, segurança, controlo e eficiência das operações dos nossos clientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band light">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <div>
+          <span class="eyebrow">Vamos falar</span>
+          <h2>Pronto para integrar a sua operação?</h2>
+          <p>Conte-nos o desafio actual — automação, segurança, software ou IoT — e a nossa equipa propõe o melhor caminho.</p>
+        </div>
+        <a href="#contacto" class="btn btn-primary">Pedir uma proposta →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo2.png" alt="Arkad Solutions">
+        <p>Tecnologia, engenharia e soluções inteligentes para empresas. Automação · Segurança · Software · IoT · Formação.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Áreas</h5>
+        <ul>
+          <li><a href="#areas">Automação Industrial</a></li>
+          <li><a href="#areas">Segurança Electrónica</a></li>
+          <li><a href="#areas">Desenvolvimento de Software</a></li>
+          <li><a href="#areas">IoT</a></li>
+          <li><a href="#areas">Treinamentos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="#integracao">Soluções Integradas</a></li>
+          <li><a href="#modelo">Modelo de Actuação</a></li>
+          <li><a href="#porque">Porquê a Arkad</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:info@arkadsolutions.co.mz">Info@arkadsolutions.co.mz</a></li>
+          <li><a href="tel:+258878959520">+258 87 895 9520</a></li>
+          <li><a href="#">Tete, Moçambique</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ARKAD SOLUTIONS. TODOS OS DIREITOS RESERVADOS.</span>
+      <span>AUTOMAÇÃO · SEGURANÇA · SOFTWARE · IoT · FORMAÇÃO</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // reveal on scroll (progressive enhancement; falls back to visible immediately)
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.14 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // swap process view for small screens
+  function syncProcessView(){
+    const mobile = window.matchMedia('(max-width:759px)').matches;
+    document.getElementById('mobileProcess').style.display = mobile ? 'block' : 'none';
+  }
+  syncProcessView();
+  window.addEventListener('resize', syncProcessView);
+</script>
+
+</body>
+</html>
